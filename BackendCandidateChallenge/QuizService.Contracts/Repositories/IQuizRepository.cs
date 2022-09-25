@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizService.Model.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace QuizService.Contracts.Repositories
 {
     public interface IQuizRepository
     {
-        IEnumerable<QuizService.Model.Domain.Quiz> GetAll();
+        Quiz Get(int id);
+        IEnumerable<Quiz> GetAll();
+        IEnumerable<Question> GetQuestions(int id);
+        Dictionary<int, IList<Answer>> GetQuizAnswers(int id);
+        int Insert(Quiz quiz);
     }
 }

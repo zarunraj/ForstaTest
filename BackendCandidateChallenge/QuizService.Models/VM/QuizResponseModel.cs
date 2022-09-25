@@ -1,9 +1,41 @@
+using QuizService.Model.Domain;
 using System.Collections.Generic;
 
 namespace QuizService.Model;
 
 public class QuizResponseModel
 {
+
+
+    public QuizResponseModel()
+    {
+
+    }
+
+    public QuizResponseModel(Quiz quiz, IEnumerable<Question> questions, Dictionary<int, IList<Answer>> answers)
+    {
+        Id = quiz.Id;
+        Title = quiz.Title;
+        Questions = questions.Select(question => new QuestionItem
+        {
+            Id = question.Id,
+            Text = question.Text,
+            Answers = answers.ContainsKey(question.Id)
+                ? answers[question.Id].Select(answer => new AnswerItem
+                {
+                    Id = answer.Id,
+                    Text = answer.Text
+                })
+                : new AnswerItem[0],
+            CorrectAnswerId = question.CorrectAnswerId
+        });
+        Links = new Dictionary<string, string>
+            {
+                {"self", $"/api/quizzes/{quiz.Id}"},
+                {"questions", $"/api/quizzes/{quiz.Id}/questions"}
+            };
+    }
+
     public class AnswerItem
     {
         public int Id { get; set; }
