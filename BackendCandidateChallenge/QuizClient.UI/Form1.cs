@@ -36,6 +36,7 @@ namespace QuizClient.UI
             var quiz = quizResponse.Value;
 
             flowLayoutPanel1.Visible = false;
+            flowLayoutPanel2.Visible = true;
             groupBox1.Visible = true;
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Text = quiz.Title;

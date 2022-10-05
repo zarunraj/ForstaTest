@@ -105,7 +105,7 @@ public class QuizClientTests : IClassFixture<QuizServiceApiPact>
         var result = await consumer.GetQuizAsync(123, CancellationToken.None);
         Assert.True(string.IsNullOrEmpty(result.ErrorMessage), result.ErrorMessage);
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-        Assert.NotEqual(Quiz.NotFound, result.Value);
+        Assert.NotEqual(QuizResponseModel.NotFound, result.Value);
         Assert.Equal("This is quiz 123", result.Value.Title);
 
         _mockProviderService.VerifyInteractions();
