@@ -55,7 +55,7 @@ public class QuizController : Controller
     public IActionResult Post([FromBody] QuizCreateModel value)
     {
         var id = quizRepository.Insert(new Quiz(value.Title));
-        return Created($"/api/quizzes/{id}", null);
+        return Created($"/api/quizzes/{id}", id);
     }
 
     // PUT api/quizzes/5
@@ -94,7 +94,7 @@ public class QuizController : Controller
 
         const string sql = "INSERT INTO Question (Text, QuizId) VALUES(@Text, @QuizId); SELECT LAST_INSERT_ROWID();";
         var questionId = _connection.ExecuteScalar(sql, new { Text = value.Text, QuizId = id });
-        return Created($"/api/quizzes/{id}/questions/{questionId}", null);
+        return Created($"/api/quizzes/{id}/questions/{questionId}", questionId);
     }
 
     // PUT api/quizzes/5/questions/6
@@ -125,7 +125,7 @@ public class QuizController : Controller
     {
         const string sql = "INSERT INTO Answer (Text, QuestionId) VALUES(@Text, @QuestionId); SELECT LAST_INSERT_ROWID();";
         var answerId = _connection.ExecuteScalar(sql, new { Text = value.Text, QuestionId = qid });
-        return Created($"/api/quizzes/{id}/questions/{qid}/answers/{answerId}", null);
+        return Created($"/api/quizzes/{id}/questions/{qid}/answers/{answerId}", answerId);
     }
 
     // PUT api/quizzes/5/questions/6/answers/7
