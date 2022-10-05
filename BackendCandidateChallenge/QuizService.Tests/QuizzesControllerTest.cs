@@ -84,6 +84,7 @@ public class QuizzesControllerTest
     }
 
     [Fact]
+    //We can split this big method and assign priority 
     public async Task PostNewQuizAddsQuizWithQuestions()
     {
 
@@ -134,6 +135,13 @@ public class QuizzesControllerTest
             response = await client.PostAsync(new Uri(testHost.BaseAddress, QuizQuestionApiEndPoint), strContent);
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
 
+
+            //Take test 
+            response = await client.GetAsync(new Uri(testHost.BaseAddress, $"{QuizApiEndPoint}{quizId}"));
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotNull(response.Content);
+            QuizResponseModel quizResponse = JsonConvert.DeserializeObject<QuizResponseModel>(await response.Content.ReadAsStringAsync());
+            Assert.Equal(quizId, quizResponse.Id);
 
 
         }

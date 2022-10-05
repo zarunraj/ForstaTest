@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using Newtonsoft.Json; 
 using QuizClient.Tests;
 
 namespace QuizClient;
@@ -31,14 +31,14 @@ public class QuizClient
             new Response<IEnumerable<Quiz>>(response.StatusCode, new Quiz[0], await ReadErrorAsync(response));
     }
 
-    public async Task<Response<Quiz>> GetQuizAsync(int id, CancellationToken cancellationToken)
+    public async Task<Response<QuizResponseModel>> GetQuizAsync(int id, CancellationToken cancellationToken)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, new Uri(_quizServiceUri, "/api/quizzes/" + id));
         request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         var response = await _httpClient.SendAsync(request, cancellationToken);
         return response.StatusCode == HttpStatusCode.OK ?
-            new Response<Quiz>(response.StatusCode, await ReadAndDeserializeAsync<Quiz>(response)) :
-            new Response<Quiz>(response.StatusCode, Quiz.NotFound, await ReadErrorAsync(response));
+            new Response<QuizResponseModel>(response.StatusCode, await ReadAndDeserializeAsync<QuizResponseModel>(response)) :
+            new Response<QuizResponseModel>(response.StatusCode, QuizResponseModel.NotFound, await ReadErrorAsync(response));
     }
 
     public async Task<Response<Uri>> PostQuizAsync(Quiz quiz, CancellationToken cancellationToken)

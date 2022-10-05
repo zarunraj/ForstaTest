@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizClient", "QuizClient\Qu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizClient.Tests", "QuizClient.Tests\QuizClient.Tests.csproj", "{A1746465-9494-46CC-AB14-EB6AB15F446D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizService.DataAccess", "QuizService.DataAccess\QuizService.DataAccess.csproj", "{62F2A813-04F4-46FE-AF48-01F08E622D20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizService.DataAccess", "QuizService.DataAccess\QuizService.DataAccess.csproj", "{62F2A813-04F4-46FE-AF48-01F08E622D20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizService.Models", "QuizService.Models\QuizService.Models.csproj", "{BF22D5CB-B469-4437-B3EE-1A70DEA2538E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizService.Models", "QuizService.Models\QuizService.Models.csproj", "{BF22D5CB-B469-4437-B3EE-1A70DEA2538E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizService.Contracts", "QuizService.Contracts\QuizService.Contracts.csproj", "{223D0CA0-474C-48AA-B3F2-F5C343289FBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizService.Contracts", "QuizService.Contracts\QuizService.Contracts.csproj", "{223D0CA0-474C-48AA-B3F2-F5C343289FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizClient.UI", "QuizClient.UI\QuizClient.UI.csproj", "{DE831494-06E3-41E9-A3FE-688D58B91CF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{223D0CA0-474C-48AA-B3F2-F5C343289FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{223D0CA0-474C-48AA-B3F2-F5C343289FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{223D0CA0-474C-48AA-B3F2-F5C343289FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE831494-06E3-41E9-A3FE-688D58B91CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE831494-06E3-41E9-A3FE-688D58B91CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE831494-06E3-41E9-A3FE-688D58B91CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE831494-06E3-41E9-A3FE-688D58B91CF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
